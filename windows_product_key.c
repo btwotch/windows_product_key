@@ -68,13 +68,15 @@ windows_product_key_init(void)
 	if (IS_ERR(winkey_dev)) {
 		ret = PTR_ERR(winkey_dev);
 		winkey_dev = NULL;
-		pr_err("unable to register hwmon platform device\n");
+		pr_err("unable to register windows_product_key platform "
+				"device\n");
 		return ret;
 	}
 
 	ret = device_create_file(&winkey_dev->dev, &dev_attr_key);
 	if (ret) {
-		pr_err("unable to create sysfs hwmon device attributes\n");
+		pr_err("unable to create sysfs windows_product_key device "
+				"attributes\n");
 		return ret;
 	}
 
