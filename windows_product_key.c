@@ -6,8 +6,6 @@
 
 #include <linux/acpi.h>
 
-#define BUFFER_SIZE 256
-
 static ssize_t winkey_show(struct device *dev,
 		struct device_attribute *attr,
 		char *buf)
