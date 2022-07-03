@@ -18,9 +18,8 @@ static ssize_t winkey_show(struct device *dev,
 	u8 *product_code;
 	u32 product_code_len;
 	acpi_status status;
-	acpi_size tbl_size;
 
-	status = acpi_get_table_with_size(ACPI_SIG_MSDM, 0, &table, &tbl_size);
+	status = acpi_get_table(ACPI_SIG_MSDM, 0, &table);
 
 	if (ACPI_FAILURE(status)) {
 		const char *msg = acpi_format_exception(status);
