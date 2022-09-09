@@ -11,6 +11,7 @@ static ssize_t winkey_show(struct device *dev,
 		char *buf)
 {
 	int i;
+	int ret;
 	struct acpi_table_header *table;
 	struct acpi_table_msdm *msdm;
 	u8 *body;
@@ -45,8 +46,11 @@ static ssize_t winkey_show(struct device *dev,
 	product_code = body + i;
 	product_code_len = body_len - i;
 
-	return snprintf(buf, PAGE_SIZE, "%.*s\n",
+	ret = snprintf(buf, PAGE_SIZE, "%.*s\n",
 			product_code_len, product_code);
+
+	acpi_put_table(table);
+	return ret;
 
 }
 
